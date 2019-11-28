@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const exphbs = require("express-handlebars");
 
 //mongoose setting
 mongoose.connect("mongodb://localhost/account", {
@@ -15,27 +16,30 @@ db.on("error", () => {
 db.once("open", () => {
   console.log("mongodb connected!");
 });
-
 //透過mongoose連線database後載入Account Model
 const Record = require("./models/record.js");
 
+//handlebars setting
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 //route
 app.get("/", (req, res) => {
-  res.send("首頁：瀏覽所有資料");
+  res.render("index");
 });
 app.get("/record", (req, res) => {
   res.redirect("/");
 });
 //新增頁面
 app.get("/record/new", (req, res) => {
-  res.send("新增一筆消費頁面");
+  res.render("new");
 });
 app.post("/record/new", (req, res) => {
   res.send("新增頁面送出動作");
 });
 //編輯頁面
 app.get("/record/edit", (req, res) => {
-  res.send("編輯一筆消費頁面");
+  res.render("edit");
 });
 app.post("/record/edit", (req, res) => {
   res.send("編輯頁面送出動作");
