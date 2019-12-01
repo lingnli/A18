@@ -55,9 +55,9 @@
           <div class="col-1 mt-1">
             <a href="/record/edit/{{this._id}}" class="ex-btn btn btn-info">edit</a>
           </div>
-          <div class="col-1 ml-2 mt-1">
-            <a href="#" class="ex-btn btn btn-danger">delete</a>
-          </div>
+          <form action="/record/delete/{{this._id}}" method="POST" class="col-1 ml-2 mt-1" style="display:inline;">
+            <button type="submit" class="ex-btn btn btn-danger">delete</button>
+          </form>
         </div>
       </li>
       {{/each}}

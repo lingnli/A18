@@ -1,7 +1,7 @@
 <h3 class="text-center mt-3">請修改你的支出</h3>
 <h6 class="text-center mt-4">所有欄位為必填</h6>
 
-<form method="POST" action="/record/new" class="form-new mx-auto mt-3" style="width:450px">
+<form method="POST" action="/record/edit/{{records.id}}" class="form-new mx-auto mt-3" style="width:450px">
 
   <div class="form-group row  form-group-new">
     <label for="name" class="col-form-label mt-2">名稱：
@@ -39,7 +39,7 @@
 
 
   <div class="mx-auto" style="width: 200px;">
-    <button type="submit" class="btn-new btn btn-outline-dark mb-3" style="width:200px;">新增支出</button>
+    <button type="submit" class="btn-new btn btn-outline-dark mb-3" style="width:200px;">確定修改支出</button>
   </div>
 
 </form>

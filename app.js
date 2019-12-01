@@ -78,7 +78,12 @@ app.get("/record/edit/:id", (req, res) => {
 app.post("/record/edit/:id", (req, res) => {
   Record.findById(req.params.id, (err, records) => {
     if (err) return console.log(err);
+    records.name = req.body.name;
+    records.category = req.body.category;
+    records.date = req.body.date;
+    records.amount = req.body.amount;
     records.save(err => {
+      console.log(records);
       if (err) return console.log(err);
       res.redirect("/");
     });
@@ -86,8 +91,14 @@ app.post("/record/edit/:id", (req, res) => {
 });
 
 //刪除
-app.post("/record/delete", (req, res) => {
-  res.send("刪除一筆資料動作");
+app.post("/record/delete/:id", (req, res) => {
+  Record.findById(req.params.id, (err, records) => {
+    if (err) return console.log(err);
+    records.remove(err => {
+      if (err) return console.log(err);
+      res.redirect("/");
+    });
+  });
 });
 
 app.listen(3000, () => {
