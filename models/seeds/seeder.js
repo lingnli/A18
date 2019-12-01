@@ -18,10 +18,10 @@ db.once("open", () => {
 
   //新增一個dummy data 測試存入Account Model是否正常
   Account.create({
-    name: "午餐",
-    date: "2019-04-20",
-    category: "餐飲食品",
-    amount: 60
+    name: "買吸塵器",
+    date: "2019-11-22",
+    category: "家居物業",
+    amount: 15600
   });
 
   console.log("done");

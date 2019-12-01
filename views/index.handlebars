@@ -15,32 +15,48 @@
 
   <div class="total-box mt-3">
     <p class="float-left">總金額：</p>
-    <div class="total float-right">25260</div>
+    <div class="total float-right">{{totalAmount}}</div>
   </div>
 
   <!--支出data-panel-->
-  <div class="expense">
+  <div class="expense mx-auto">
 
     <ul class="list-group">
       {{#if records}}
       {{#each records}}
       <li class="list-group-item">
-        <div class="row">
-          <div class="col-1 mt-1">
+        <div class="row row-panel">
+
+          <div class="col-1 mt-1 mr-1">
+            {{#ifEquals this.category 'house'}}
             <i class="fas fa-home"></i>
+            {{/ifEquals}}
+            {{#ifEquals this.category 'trans'}}
+            <i class="fas fa-shuttle-van"></i>
+            {{/ifEquals}}
+            {{#ifEquals this.category 'leisure'}}
+            <i class="fas fa-grin-beam"></i>
+            {{/ifEquals}}
+            {{#ifEquals this.category 'food'}}
+            <i class="fas fa-utensils"></i>
+            {{/ifEquals}}
+            {{#ifEquals this.category 'other'}}
+            <i class="fas fa-pen"></i>
+            {{/ifEquals}}
           </div>
-          <div class="col-7 column">
+
+          <div class="col-6 column">
             <div>{{this.name}}</div>
             <div class="date">{{this.date}}</div>
           </div>
-          <div class="col-1 mt-1">
+          <div class="col-2 mt-1 text-center">
             {{this.amount}}
           </div>
           <div class="col-1 mt-1">
-            <button type="button" class="ex-btn btn btn-info">edit</button>
+            <a href="#" class="ex-btn btn btn-info">edit</a>
           </div>
           <div class="col-1 ml-2 mt-1">
-            <button type="button" class="ex-btn btn btn-danger">delete</button>
+            <a href="#" class="ex-btn btn btn-danger">delete</a>
           </div>
         </div>
       </li>
@@ -69,10 +85,10 @@
 
     </ul>
 
-
+    <div class="text-center">
+      <a href="/record/new" class="btn-create btn btn-info my-5">新增支出</a>
+    </div>
 
   </div>
-
-
 
 </div>
