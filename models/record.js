@@ -6,6 +6,19 @@ const recordSchema = new Schema({
   name: {
     type: String,
     required: true
+  },
+  category: {
+    type: String,
+    required: true,
+    default: Date.now()
+  },
+  date: {
+    type: Date,
+    required: true
+  },
+  amount: {
+    type: Number,
+    required: true
   }
 });
 

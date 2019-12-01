@@ -1,0 +1,51 @@
+/*main*/
+.nav-out {
+  background-color: #e0e0e0;
+  height: auto;
+}
+.btn-log {
+  background-color: white;
+  border: 3px solid white;
+  border-radius: 7px;
+  color: #ff5809;
+}
+.btn-log:hover {
+  background-color: #ff8040;
+  color: white;
+}
+/*index*/
+.sort,
+.sort-down {
+  width: 500px;
+  border: 1.5px solid black;
+  border-radius: 0px;
+}
+.sort-down {
+  border: 2px solid #e0e0e0;
+}
+.total-box {
+  width: 400px;
+  height: 150px;
+}
+.total {
+  display: inline;
+  font-size: 100px;
+  font-weight: 300;
+  color: #ff8040;
+}
+/*data-panel*/
+.expense {
+  width: 550px;
+}
+.row {
+  height: 40px;
+}
+.ex-btn {
+  font-size: 10px;
+}
+.fas {
+  font-size: 32px;
+}
+.date {
+  font-size: 10px;
+}

@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
 
 //mongoose setting
-mongoose.connect("mongodb://localhost/account", {
+mongoose.connect("mongodb://localhost/record", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -23,9 +23,15 @@ const Record = require("./models/record.js");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//static file setting
+app.use(express.static("public"));
+
 //route
 app.get("/", (req, res) => {
-  res.render("index");
+  Record.find((err, records) => {
+    if (err) return err;
+    res.render("index", { records });
+  });
 });
 app.get("/record", (req, res) => {
   res.redirect("/");
