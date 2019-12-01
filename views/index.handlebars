@@ -28,19 +28,19 @@
         <div class="row row-panel">
 
           <div class="col-1 mt-1 mr-1">
-            {{#ifEquals this.category 'house'}}
+            {{#ifEquals this.category '家居物業'}}
             <i class="fas fa-home"></i>
             {{/ifEquals}}
-            {{#ifEquals this.category 'trans'}}
+            {{#ifEquals this.category '交通出行'}}
             <i class="fas fa-shuttle-van"></i>
             {{/ifEquals}}
-            {{#ifEquals this.category 'leisure'}}
+            {{#ifEquals this.category '休閒娛樂'}}
             <i class="fas fa-grin-beam"></i>
             {{/ifEquals}}
-            {{#ifEquals this.category 'food'}}
+            {{#ifEquals this.category '餐飲食品'}}
             <i class="fas fa-utensils"></i>
             {{/ifEquals}}
-            {{#ifEquals this.category 'other'}}
+            {{#ifEquals this.category '其他'}}
             <i class="fas fa-pen"></i>
             {{/ifEquals}}
           </div>
@@ -53,7 +53,7 @@
             {{this.amount}}
           </div>
           <div class="col-1 mt-1">
-            <a href="#" class="ex-btn btn btn-info">edit</a>
+            <a href="/record/edit/{{this._id}}" class="ex-btn btn btn-info">edit</a>
           </div>
           <div class="col-1 ml-2 mt-1">
             <a href="#" class="ex-btn btn btn-danger">delete</a>
@@ -62,27 +62,6 @@
       </li>
       {{/each}}
       {{/if}}
-      <li class="list-group-item list-group-item-secondary">
-        <div class="row">
-          <div class="col-1 mt-1">
-            <i class="fas fa-home"></i>
-          </div>
-          <div class="col-7 column">
-            <div>午餐</div>
-            <div class="date">2019/04/20</div>
-          </div>
-          <div class="col-1 mt-1">
-            60
-          </div>
-          <div class="col-1 mt-1">
-            <button type="button" class="ex-btn btn btn-info">edit</button>
-          </div>
-          <div class="col-1 ml-2 mt-1">
-            <button type="button" class="ex-btn btn btn-danger">delete</button>
-          </div>
-        </div>
-      </li>
-
     </ul>
 
     <div class="text-center">

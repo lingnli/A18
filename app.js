@@ -68,12 +68,23 @@ app.post("/record/new", (req, res) => {
 });
 
 //編輯頁面
-app.get("/record/edit", (req, res) => {
-  res.render("edit");
+app.get("/record/edit/:id", (req, res) => {
+  console.log(req.params.id);
+  Record.findById(req.params.id, (err, records) => {
+    if (err) return console.log(err);
+    res.render("edit", { records });
+  });
 });
-app.post("/record/edit", (req, res) => {
-  res.send("編輯頁面送出動作");
+app.post("/record/edit/:id", (req, res) => {
+  Record.findById(req.params.id, (err, records) => {
+    if (err) return console.log(err);
+    records.save(err => {
+      if (err) return console.log(err);
+      res.redirect("/");
+    });
+  });
 });
+
 //刪除
 app.post("/record/delete", (req, res) => {
   res.send("刪除一筆資料動作");
