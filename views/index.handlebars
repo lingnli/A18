@@ -1,15 +1,16 @@
 <div class="container mt-4" style="width:500px;">
 
   <div class="dropdown mx-auto" style="display: inline;">
-    <button class="sort btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+    <button class="sort btn dropdown-toggle ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown">
       排序
     </button>
     <div class="sort-down mt-2 dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="/sort/name-asc">家居物業</a>
-      <a class="dropdown-item" href="/sort/name-desc">交通出行</a>
-      <a class="dropdown-item" href="/sort/rating-desc">休閒娛樂</a>
-      <a class="dropdown-item" href="/sort/rating-asc">餐飲食品</a>
-      <a class="dropdown-item" href="/sort/rating-asc">其他</a>
+      <a class="dropdown-item" href="/sort/house">家居物業</a>
+      <a class="dropdown-item" href="/sort/trans">交通出行</a>
+      <a class="dropdown-item" href="/sort/leisure">休閒娛樂</a>
+      <a class="dropdown-item" href="/sort/food">餐飲食品</a>
+      <a class="dropdown-item" href="/sort/other">其他</a>
+      <a class="dropdown-item" href="/">所有分類</a>
     </div>
   </div>
 
@@ -52,12 +53,17 @@
           <div class="col-2 mt-1 text-center">
             {{this.amount}}
           </div>
+
           <div class="col-1 mt-1">
             <a href="/record/edit/{{this._id}}" class="ex-btn btn btn-info">edit</a>
           </div>
-          <form action="/record/delete/{{this._id}}" method="POST" class="col-1 ml-2 mt-1" style="display:inline;">
-            <button type="submit" class="ex-btn btn btn-danger">delete</button>
+
+          <!--delete action需以form送出 並在delete btn上榜定form事件-->
+          <form action="/record/delete/{{this._id}}" method="POST" class="col-1 ml-2 mt-1" style="display:inline;"
+            onsubmit="return confirm('確認刪除此筆支出？')">
+            <button type="submit" id="delete" class="ex-btn btn btn-danger">delete</button>
           </form>
+
         </div>
       </li>
       {{/each}}
@@ -65,7 +71,7 @@
     </ul>
 
     <div class="text-center">
-      <a href="/record/new" class="btn-create btn btn-info my-5">新增支出</a>
+      <a href="/record/new" class="btn-create border-0 btn btn-info my-5">新增支出</a>
     </div>
 
   </div>

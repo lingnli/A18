@@ -101,6 +101,9 @@ app.post("/record/delete/:id", (req, res) => {
   });
 });
 
+//sort route
+app.use("/sort", require("./route/sort.js"));
+
 app.listen(3000, () => {
   console.log("App is running!");
 });

@@ -8,20 +8,21 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
     integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
   <link rel="stylesheet" href="/main.css">
-  <title>Expende Tracker</title>
+  <title>Expense Tracker</title>
 </head>
 
 <body>
   <!--- navbar -->
   <div class="nav-out">
     <nav class="navbar">
-      <span class="navbar-brand mb-0 h1">老爹の私房錢</span>
-      <button type="button" class="btn-log btn btn-outline-light btn-dark">login/logout</button>
+      <a href="/" class="title navbar-brand mb-0 h1">老爹の私房錢</a>
+      <button type="button" class="btn-log btn btn-outline-light btn-dark" onclick="confirm('確認登出？')">logout</button>
     </nav>
   </div>
 
   {{{body}}}
 
+  <script src="/alert.js"></script>
   <script src="https://kit.fontawesome.com/d5f1b9cac6.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

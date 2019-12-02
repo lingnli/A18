@@ -13,6 +13,9 @@
   background-color: #ff8040;
   color: white;
 }
+.title:hover {
+  color: rgb(51, 50, 50);
+}
 /*index*/
 .sort,
 .sort-down {
@@ -24,7 +27,7 @@
   border: 2px solid #e0e0e0;
 }
 .total-box {
-  width: 400px;
+  width: 450px;
   height: 150px;
 }
 .total {
@@ -53,15 +56,19 @@ i {
   font-size: 10px;
 }
 .btn-create {
+  outline: none;
   border: 1.5px solid black;
   background-color: #ff5809;
   color: white;
   width: 200px;
 }
 .btn-create:hover {
-  border: 1.5px solid black;
+  outline: none;
+  border: 1.5px solid white;
   background-color: #ff8040;
   color: white;
+  transform: scale(1.5, 1.5);
+  transition: all 0.1s ease-out;
 }
 /*new*/
 .form-new {
@@ -84,4 +91,11 @@ i {
 }
 .btn-new {
   border: 1.5px solid black;
+}
+
+/*nav affect*/
+.dollars {
+  padding-left: 5px;
+  font-size: 20px;
+  color: black;
 }
