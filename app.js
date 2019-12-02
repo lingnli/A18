@@ -42,6 +42,8 @@ app.use("/", require("./route/home.js"));
 app.use("/record", require("./route/record.js"));
 //sort route
 app.use("/sort", require("./route/sort.js"));
+//user route
+app.use("/user", require("./route/user.js"));
 
 app.listen(3000, () => {
   console.log("App is running!");

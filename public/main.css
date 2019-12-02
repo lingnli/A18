@@ -92,10 +92,40 @@ i {
 .btn-new {
   border: 1.5px solid black;
 }
-
 /*nav affect*/
 .dollars {
   padding-left: 5px;
   font-size: 20px;
   color: black;
+}
+/*login*/
+.login,
+.register {
+  width: 80vw;
+}
+.row-login {
+  box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+.left {
+  background-color: black;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-image: url("https://cdn.gobankingrates.com/wp-content/uploads/2019/07/Businessman-in-Hamster-Wheel-iStock-1157701608.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 630px;
+}
+.login-text {
+  color: #46a3ff;
+}
+/*register*/
+.register-left {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-size: 750px;
+  background-image: url("http://www.dailynature.net/wp-content/uploads/2019/11/Pile-of-dollars1.jpg");
+  background-attachment: local;
 }
