@@ -36,75 +36,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 //route
-//首頁
-app.get("/", (req, res) => {
-  Record.find((err, records) => {
-    if (err) return err;
-
-    //總計
-    let totalAmount = 0;
-    for (let i = 0; i < records.length; i++) {
-      totalAmount += records[i].amount;
-    }
-    res.render("index", { records, totalAmount });
-  });
-});
-app.get("/record", (req, res) => {
-  res.redirect("/");
-});
-
-//新增頁面
-app.get("/record/new", (req, res) => {
-  res.render("new");
-});
-app.post("/record/new", (req, res) => {
-  console.log(req.body);
-  const record = new Record({
-    name: req.body.name,
-    category: req.body.category,
-    date: req.body.date,
-    amount: req.body.amount
-  });
-  record.save(err => {
-    if (err) return console.log(err);
-    return res.redirect("/");
-  });
-});
-
-//編輯頁面
-app.get("/record/edit/:id", (req, res) => {
-  console.log(req.params.id);
-  Record.findById(req.params.id, (err, records) => {
-    if (err) return console.log(err);
-    res.render("edit", { records });
-  });
-});
-app.put("/record/edit/:id", (req, res) => {
-  Record.findById(req.params.id, (err, records) => {
-    if (err) return console.log(err);
-    records.name = req.body.name;
-    records.category = req.body.category;
-    records.date = req.body.date;
-    records.amount = req.body.amount;
-    records.save(err => {
-      console.log(records);
-      if (err) return console.log(err);
-      res.redirect("/");
-    });
-  });
-});
-
-//刪除
-app.delete("/record/delete/:id", (req, res) => {
-  Record.findById(req.params.id, (err, records) => {
-    if (err) return console.log(err);
-    records.remove(err => {
-      if (err) return console.log(err);
-      res.redirect("/");
-    });
-  });
-});
-
+//home route
+app.use("/", require("./route/home.js"));
+//record route
+app.use("/record", require("./route/record.js"));
 //sort route
 app.use("/sort", require("./route/sort.js"));
 
