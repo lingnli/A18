@@ -59,8 +59,8 @@
           </div>
 
           <!--delete action需以form送出 並在delete btn上榜定form事件-->
-          <form action="/record/delete/{{this._id}}" method="POST" class="col-1 ml-2 mt-1" style="display:inline;"
-            onsubmit="return confirm('確認刪除此筆支出？')">
+          <form action="/record/delete/{{this._id}}?_method=DELETE" method="POST" class="col-1 ml-2 mt-1"
+            style="display:inline;" onsubmit="return confirm('確認刪除此筆支出？')">
             <button type="submit" id="delete" class="ex-btn btn btn-danger">delete</button>
           </form>
 

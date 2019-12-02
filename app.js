@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
 const helper = require("./handlebars-helper.js");
 const bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 
 //mongoose setting
 mongoose.connect("mongodb://localhost/record", {
@@ -30,6 +31,9 @@ app.use(express.static("public"));
 
 //body-parser setting
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//method-override setting POST having ?_method=DELETE/UPDATE
+app.use(methodOverride("_method"));
 
 //route
 //首頁
@@ -75,7 +79,7 @@ app.get("/record/edit/:id", (req, res) => {
     res.render("edit", { records });
   });
 });
-app.post("/record/edit/:id", (req, res) => {
+app.put("/record/edit/:id", (req, res) => {
   Record.findById(req.params.id, (err, records) => {
     if (err) return console.log(err);
     records.name = req.body.name;
@@ -91,7 +95,7 @@ app.post("/record/edit/:id", (req, res) => {
 });
 
 //刪除
-app.post("/record/delete/:id", (req, res) => {
+app.delete("/record/delete/:id", (req, res) => {
   Record.findById(req.params.id, (err, records) => {
     if (err) return console.log(err);
     records.remove(err => {
