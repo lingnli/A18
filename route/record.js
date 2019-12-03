@@ -1,15 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const Record = require("../models/record.js");
+const { authenticated } = require("../config/auth.js");
 
-router.get("/", (req, res) => {
+router.get("/", authenticated, (req, res) => {
   res.redirect("/");
 });
 //新增頁面
-router.get("/new", (req, res) => {
+router.get("/new", authenticated, (req, res) => {
   res.render("new");
 });
-router.post("/new", (req, res) => {
+router.post("/new", authenticated, (req, res) => {
   console.log(req.body);
   const record = new Record({
     name: req.body.name,
@@ -24,14 +25,14 @@ router.post("/new", (req, res) => {
 });
 
 //編輯頁面
-router.get("/edit/:id", (req, res) => {
+router.get("/edit/:id", authenticated, (req, res) => {
   console.log(req.params.id);
   Record.findById(req.params.id, (err, records) => {
     if (err) return console.log(err);
     res.render("edit", { records });
   });
 });
-router.put("/edit/:id", (req, res) => {
+router.put("/edit/:id", authenticated, (req, res) => {
   Record.findById(req.params.id, (err, records) => {
     if (err) return console.log(err);
     records.name = req.body.name;
@@ -47,7 +48,7 @@ router.put("/edit/:id", (req, res) => {
 });
 
 //刪除
-router.delete("/delete/:id", (req, res) => {
+router.delete("/delete/:id", authenticated, (req, res) => {
   Record.findById(req.params.id, (err, records) => {
     if (err) return console.log(err);
     records.remove(err => {

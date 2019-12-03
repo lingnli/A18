@@ -45,18 +45,20 @@ app.use(
     saveUninitialized: true
   })
 );
-//設定完passport後載入local策略來驗證login POST
-require("./config/passport")(passport);
-//登入後傳回user document可以在view使用
-app.use((req, res, next) => {
-  console.log("app.js", req.user);
-  res.locals.user = req.user;
-  next();
-});
-
 //passport,session設定
 app.use(passport.initialize()); //先初始化
 app.use(passport.session()); //使用session
+
+//設定完passport後載入local策略來驗證login POST
+require("./config/passport")(passport);
+
+//登入後傳回user document可以在view使用
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.isAuthenticated = req.isAuthenticated(); //main.handlebars失效
+  console.log(req);
+  next();
+});
 
 //route
 //home route

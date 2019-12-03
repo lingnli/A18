@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Record = require("../models/record.js");
+const { authenticated } = require("../config/auth.js");
 
-router.get("/:id", (req, res) => {
+router.get("/:id", authenticated, (req, res) => {
   console.log(req.params.id);
   let option = req.params.id;
 
