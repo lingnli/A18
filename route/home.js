@@ -6,6 +6,7 @@ const { authenticated } = require("../config/auth.js");
 //首頁
 router.get("/", authenticated, (req, res) => {
   console.log(req.user);
+  //userId:record req.user._id:登入user
   Record.find({ userId: req.user._id }, (err, records) => {
     if (err) return err;
 

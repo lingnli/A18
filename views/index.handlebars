@@ -1,7 +1,11 @@
 <div class="container mt-4" style="width:500px;">
   <div class="dropdown mx-auto" style="display: inline;">
     <button class="sort btn dropdown-toggle ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-      分類
+      {{#if option}}
+      {{option}}
+      {{else}}
+      全部類別
+      {{/if}}
     </button>
     <div class="sort-down mt-2 dropdown-menu" aria-labelledby="dropdownMenuButton">
       <a class="dropdown-item" href="/sort/house">家居物業</a>
@@ -9,7 +13,7 @@
       <a class="dropdown-item" href="/sort/leisure">休閒娛樂</a>
       <a class="dropdown-item" href="/sort/food">餐飲食品</a>
       <a class="dropdown-item" href="/sort/other">其他</a>
-      <a class="dropdown-item" href="/">不分類</a>
+      <a class="dropdown-item" href="/">全部類別</a>
     </div>
   </div>
 

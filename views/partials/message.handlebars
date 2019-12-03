@@ -1,0 +1,41 @@
+{{!-- 顯示在註冊頁面：註冊頁面的錯誤訊息 --}}
+{{#if errors}}
+{{#each errors}}
+<div class="alert alert-warning alert-dismissible fade show text-center mx-auto" role="alert" style="width:400px">
+  {{this.msg}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/each}}
+{{/if}}
+
+{{!-- 顯示在登入頁面：確保每個/record都在登入內 --}}
+{{#if login_auth}}
+<div class="alert alert-danger alert-dismissible fade show text-center mx-auto" role="alert">
+  {{login_auth}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+
+{{!-- 顯示在登入頁面：成功登出 --}}
+{{#if logout_success}}
+<div class="alert alert-success alert-dismissible fade show text-center mx-auto" role="alert">
+  {{logout_success}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+
+{{!-- 顯示在登入頁面：帳號或密碼輸入錯誤 --}}
+{{#if login_error}}
+<div class="alert alert-warning alert-dismissible fade show text-center mx-auto" role="alert">
+  {{login_error}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}

@@ -25,7 +25,7 @@ router.get("/:id", authenticated, (req, res) => {
         totalAmount += records[i].amount;
       }
 
-      res.render("index", { records, totalAmount });
+      res.render("index", { records, totalAmount, option: category[option] });
     }
   );
 });

@@ -11,7 +11,7 @@ router.get("/new", authenticated, (req, res) => {
   res.render("new");
 });
 router.post("/new", authenticated, (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const record = new Record({
     name: req.body.name,
     category: req.body.category,
@@ -29,16 +29,17 @@ router.post("/new", authenticated, (req, res) => {
 router.get("/edit/:id", authenticated, (req, res) => {
   console.log(req.params.id);
   Record.findOne(
-    { id: req.params.id, userId: req.user._id },
+    { _id: req.params.id, userId: req.user._id },
     (err, records) => {
       if (err) return console.log(err);
+      console.log(records);
       res.render("edit", { records });
     }
   );
 });
 router.put("/edit/:id", authenticated, (req, res) => {
   Record.findOne(
-    { id: req.params.id, userId: req.user._id },
+    { _id: req.params.id, userId: req.user._id },
     (err, records) => {
       if (err) return console.log(err);
       records.name = req.body.name;
@@ -57,7 +58,7 @@ router.put("/edit/:id", authenticated, (req, res) => {
 //刪除
 router.delete("/delete/:id", authenticated, (req, res) => {
   Record.findOne(
-    { id: req.params.id, userId: req.user._id },
+    { _id: req.params.id, userId: req.user._id },
     (err, records) => {
       if (err) return console.log(err);
       records.remove(err => {

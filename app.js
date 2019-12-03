@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+
+//載入dotenv套件位置越前面越好
 require("dotenv").config();
 //安裝dotenv後需判別應用程式執行環境
 if (process.env.NODE_ENV !== "production") {
@@ -14,9 +16,10 @@ const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const session = require("express-session");
 const passport = require("passport");
+const flash = require("connect-flash");
 
 //mongoose setting
-mongoose.connect("mongodb://localhost/record", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/record", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
@@ -45,6 +48,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //method-override setting POST having ?_method=DELETE/UPDATE
 app.use(methodOverride("_method"));
 
+//connect-flash setting
+app.use(flash());
+
 //express-session setting
 app.use(
   session({
@@ -64,6 +70,9 @@ require("./config/passport")(passport);
 app.use((req, res, next) => {
   res.locals.user = req.user;
   res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.login_auth = req.flash("login_auth");
+  res.locals.logout_success = req.flash("logout_success");
+  res.locals.login_error = req.flash("login_error");
   next();
 });
 
@@ -79,6 +88,6 @@ app.use("/user", require("./route/user.js"));
 //auth route
 app.use("/auth", require("./route/auth.js"));
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("App is running!");
 });

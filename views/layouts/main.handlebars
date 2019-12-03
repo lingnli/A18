@@ -15,7 +15,12 @@
   <!--- navbar -->
   <div class="nav-out">
     <nav class="navbar">
+      {{#if isAuthenticated}}
       <a href="/" class="title navbar-brand mb-0 h1">老爹の私房錢</a>
+      {{else}}
+      <p class="title navbar-brand mb-0 h1">老爹の私房錢</p>
+      {{/if}}
+
       {{#if user.name}}
       <div class="ml-2 navtitle navbar-brand mb-0 h1">welcome back！{{user.name}}！</div>
       {{/if}}

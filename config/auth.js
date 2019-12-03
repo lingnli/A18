@@ -4,6 +4,7 @@ module.exports = {
     if (req.isAuthenticated()) {
       return next();
     }
+    req.flash("login_auth", "請先登入！");
     res.redirect("/user/login");
   }
 };

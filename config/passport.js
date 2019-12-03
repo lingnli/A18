@@ -37,7 +37,7 @@ module.exports = passport => {
         profileFields: ["email", "displayName"]
       },
       (accessToken, refreshToken, profile, done) => {
-        console.log(profile._json); //fb的回傳值
+        //console.log(profile._json); --> fb的回傳值
         User.findOne({ email: profile._json.email }).then(user => {
           if (!user) {
             //fb只取得name email，需協助創密碼
