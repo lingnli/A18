@@ -2,6 +2,7 @@
 const LocalStrategy = require("passport-local");
 const mongoose = require("mongoose");
 const User = require("../models/user.js");
+const bcrypt = require("bcrypt");
 
 module.exports = passport => {
   //local strategy
@@ -11,10 +12,15 @@ module.exports = passport => {
         if (!user) {
           return done(null, false, { message: "Email is not registered yet!" });
         }
-        if (user.password !== password) {
-          return done(null, false, { message: "Wrong email/password!" });
-        }
-        return done(null, user);
+        //輸入的password 資料庫中的user.password
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+          if (err) throw err;
+          if (isMatch) {
+            return done(null, user);
+          } else {
+            return done(null, false, { message: "wrong email/password!" });
+          }
+        });
       });
     })
   );

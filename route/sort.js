@@ -15,16 +15,19 @@ router.get("/:id", authenticated, (req, res) => {
     other: "其他"
   };
 
-  Record.find({ category: category[option] }, (err, records) => {
-    if (err) return console.log(err);
+  Record.find(
+    { category: category[option], userId: req.user._id },
+    (err, records) => {
+      if (err) return console.log(err);
 
-    let totalAmount = 0;
-    for (let i = 0; i < records.length; i++) {
-      totalAmount += records[i].amount;
+      let totalAmount = 0;
+      for (let i = 0; i < records.length; i++) {
+        totalAmount += records[i].amount;
+      }
+
+      res.render("index", { records, totalAmount });
     }
-
-    res.render("index", { records, totalAmount });
-  });
+  );
 });
 
 module.exports = router;
