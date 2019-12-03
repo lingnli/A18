@@ -16,7 +16,8 @@ router.post("/new", authenticated, (req, res) => {
     name: req.body.name,
     category: req.body.category,
     date: req.body.date,
-    amount: req.body.amount
+    amount: req.body.amount,
+    userId: req.user._id
   });
   record.save(err => {
     if (err) return console.log(err);
@@ -27,35 +28,44 @@ router.post("/new", authenticated, (req, res) => {
 //編輯頁面
 router.get("/edit/:id", authenticated, (req, res) => {
   console.log(req.params.id);
-  Record.findById(req.params.id, (err, records) => {
-    if (err) return console.log(err);
-    res.render("edit", { records });
-  });
+  Record.findOne(
+    { id: req.params.id, userId: req.user._id },
+    (err, records) => {
+      if (err) return console.log(err);
+      res.render("edit", { records });
+    }
+  );
 });
 router.put("/edit/:id", authenticated, (req, res) => {
-  Record.findById(req.params.id, (err, records) => {
-    if (err) return console.log(err);
-    records.name = req.body.name;
-    records.category = req.body.category;
-    records.date = req.body.date;
-    records.amount = req.body.amount;
-    records.save(err => {
-      console.log(records);
+  Record.findOne(
+    { id: req.params.id, userId: req.user._id },
+    (err, records) => {
       if (err) return console.log(err);
-      res.redirect("/");
-    });
-  });
+      records.name = req.body.name;
+      records.category = req.body.category;
+      records.date = req.body.date;
+      records.amount = req.body.amount;
+      records.save(err => {
+        console.log(records);
+        if (err) return console.log(err);
+        res.redirect("/");
+      });
+    }
+  );
 });
 
 //刪除
 router.delete("/delete/:id", authenticated, (req, res) => {
-  Record.findById(req.params.id, (err, records) => {
-    if (err) return console.log(err);
-    records.remove(err => {
+  Record.findOne(
+    { id: req.params.id, userId: req.user._id },
+    (err, records) => {
       if (err) return console.log(err);
-      res.redirect("/");
-    });
-  });
+      records.remove(err => {
+        if (err) return console.log(err);
+        res.redirect("/");
+      });
+    }
+  );
 });
 
 module.exports = router;

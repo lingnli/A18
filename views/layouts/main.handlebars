@@ -16,6 +16,9 @@
   <div class="nav-out">
     <nav class="navbar">
       <a href="/" class="title navbar-brand mb-0 h1">老爹の私房錢</a>
+      {{#if user.name}}
+      <div class="ml-2 navtitle navbar-brand mb-0 h1">welcome back！{{user.name}}！</div>
+      {{/if}}
 
       {{#if isAuthenticated}}
       <a href="/user/logout" class="btn-log btn btn-outline-light btn-dark">Logout</a>

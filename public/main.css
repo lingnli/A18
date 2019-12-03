@@ -16,6 +16,9 @@
 .title:hover {
   color: rgb(51, 50, 50);
 }
+.navtitle {
+  color: #ff5809;
+}
 /*index*/
 .sort,
 .sort-down {

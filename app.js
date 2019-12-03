@@ -11,7 +11,8 @@ const passport = require("passport");
 //mongoose setting
 mongoose.connect("mongodb://localhost/record", {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true
 });
 //after mongoose connect
 const db = mongoose.connection;
@@ -55,8 +56,7 @@ require("./config/passport")(passport);
 //登入後傳回user document可以在view使用
 app.use((req, res, next) => {
   res.locals.user = req.user;
-  res.locals.isAuthenticated = req.isAuthenticated(); //main.handlebars失效
-  console.log(req);
+  res.locals.isAuthenticated = req.isAuthenticated();
   next();
 });
 

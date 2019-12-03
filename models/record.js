@@ -18,6 +18,12 @@ const recordSchema = new Schema({
   amount: {
     type: Number,
     required: true
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    index: true, //將userId設定成索引功能增加查詢資料效能
+    required: true
   }
 });
 
