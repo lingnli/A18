@@ -117,10 +117,27 @@ i {
   background-image: url("https://cdn.gobankingrates.com/wp-content/uploads/2019/07/Businessman-in-Hamster-Wheel-iStock-1157701608.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 630px;
+  background-size: 640px;
 }
 .login-text {
   color: #46a3ff;
+}
+.one-login,
+.one-text {
+  height: 30px;
+}
+.one-text {
+  font-size: 15px;
+}
+.login-fb {
+  color: #4267b2;
+  font-size: 25px;
+  margin-left: 5px;
+}
+.login-google {
+  color: #ea4335;
+  font-size: 25px;
+  margin-left: 10px;
 }
 /*register*/
 .register-left {

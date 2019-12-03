@@ -12,7 +12,7 @@ router.get("/login", (req, res) => {
 //從config/passport.js中載入設定的login驗證方法
 const loginAuthLocal = passport.authenticate("local", {
   successRedirect: "/",
-  failureRedirect: "/login"
+  failureRedirect: "/user/login"
 });
 router.post("/login", (req, res, next) => {
   loginAuthLocal(req, res, next);

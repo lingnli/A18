@@ -1,5 +1,12 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
+//安裝dotenv後需判別應用程式執行環境
+if (process.env.NODE_ENV !== "production") {
+  // 如果不是 production 模式
+  require("dotenv").config(); // 使用 dotenv 讀取 .env 檔案
+}
+
 const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
 const helper = require("./handlebars-helper.js");
@@ -60,7 +67,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//route
+//routes
 //home route
 app.use("/", require("./route/home.js"));
 //record route
@@ -69,6 +76,8 @@ app.use("/record", require("./route/record.js"));
 app.use("/sort", require("./route/sort.js"));
 //user route
 app.use("/user", require("./route/user.js"));
+//auth route
+app.use("/auth", require("./route/auth.js"));
 
 app.listen(3000, () => {
   console.log("App is running!");
