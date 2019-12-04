@@ -37,6 +37,19 @@ router.post("/register", (req, res) => {
   if (errors.length > 0) {
     res.render("register", { errors, name, email });
   } else {
+    // let findUserByEmail = function (email) {
+    //   return new Promise((resolve, reject) => {
+    //     User.findOne({ email: email }, (err, user) => {
+    //       if (err) {
+    //         return reject(err);
+    //       }
+    //       resolve(user);
+    //     });
+    //   })
+    // }
+    // findUserByEmail(email).then(user => {
+    // });
+
     User.findOne({ email: email }).then(user => {
       if (user) {
         //email存在

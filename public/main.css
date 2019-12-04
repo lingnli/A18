@@ -21,11 +21,14 @@
 }
 /*index*/
 .sort,
-.sort-down {
-  width: 500px;
+.sort-down,
+.sort-month {
+  width: 200px;
   border: 1.5px solid black;
   border-radius: 0px;
+  left: 10px;
 }
+
 .sort-down {
   border: 2px solid #e0e0e0;
 }
@@ -39,12 +42,14 @@
   font-weight: 300;
   color: #ff8040;
 }
+li[data-list="border"] {
+}
 /*data-panel*/
 i {
   color: #7ad8e4;
 }
 .expense {
-  width: 550px;
+  width: 560px;
 }
 .row-panel {
   height: 40px;

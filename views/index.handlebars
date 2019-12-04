@@ -1,20 +1,52 @@
 <div class="container mt-4" style="width:500px;">
-  <div class="dropdown mx-auto" style="display: inline;">
-    <button class="sort btn dropdown-toggle ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-      {{#if option}}
-      {{option}}
-      {{else}}
-      全部類別
-      {{/if}}
-    </button>
-    <div class="sort-down mt-2 dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="/sort/house">家居物業</a>
-      <a class="dropdown-item" href="/sort/trans">交通出行</a>
-      <a class="dropdown-item" href="/sort/leisure">休閒娛樂</a>
-      <a class="dropdown-item" href="/sort/food">餐飲食品</a>
-      <a class="dropdown-item" href="/sort/other">其他</a>
-      <a class="dropdown-item" href="/">全部類別</a>
+
+  <div class="justify-content-center row" style="width:500px;">
+    {{!-- date --}}
+
+    {{!-- date --}}
+    <div class="dropdown mx-auto col-5">
+      <button class="sort btn dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+        {{#if queryMonth}}
+        {{queryMonth}}
+        {{else}}
+        月份
+        {{/if}}
+      </button>
+      <div class="sort-down mt-2 dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="/sort/?queryCategory={{queryCategory}}&queryMonth=01">1</a>
+        <a class="dropdown-item" href="/sort/?queryCategory={{queryCategory}}&queryMonth=02">2</a>
+        <a class="dropdown-item" href="/sort/?queryCategory={{queryCategory}}&queryMonth=03">3</a>
+        <a class="dropdown-item" href="/sort/?queryCategory={{queryCategory}}&queryMonth=04">4</a>
+        <a class="dropdown-item" href="/sort/?queryCategory={{queryCategory}}&queryMonth=05">5</a>
+        <a class="dropdown-item" href="/sort/?queryCategory={{queryCategory}}&queryMonth=06">6</a>
+        <a class="dropdown-item" href="/sort/?queryCategory={{queryCategory}}&queryMonth=07">7</a>
+        <a class="dropdown-item" href="/sort/?queryCategory={{queryCategory}}&queryMonth=08">8</a>
+        <a class="dropdown-item" href="/sort/?queryCategory={{queryCategory}}&queryMonth=09">9</a>
+        <a class="dropdown-item" href="/sort/?queryCategory={{queryCategory}}&queryMonth=10">10</a>
+        <a class="dropdown-item" href="/sort/?queryCategory={{queryCategory}}&queryMonth=11">11</a>
+        <a class="dropdown-item" href="/sort/?queryCategory={{queryCategory}}&queryMonth=12">12</a>
+        <a class="dropdown-item" href="/sort/?queryCategory={{queryCategory}}&queryMonth=all">all</a>
+      </div>
     </div>
+    {{!-- category --}}
+    <div class="dropdown mx-auto">
+      <button class="sort btn dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+        {{#if category}}
+        {{category}}
+        {{else}}
+        全部類別
+        {{/if}}
+      </button>
+      <div class="sort-down mt-2 dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="/sort/?queryCategory=house&queryMonth={{queryMonth}}">家居物業</a>
+        <a class="dropdown-item" href="/sort/?queryCategory=trans&queryMonth={{queryMonth}}">交通出行</a>
+        <a class="dropdown-item" href="/sort/?queryCategory=leisure&queryMonth={{queryMonth}}">休閒娛樂</a>
+        <a class="dropdown-item" href="/sort/?queryCategory=food&queryMonth={{queryMonth}}">餐飲食品</a>
+        <a class="dropdown-item" href="/sort/?queryCategory=other&queryMonth={{queryMonth}}">其他</a>
+        <a class="dropdown-item" href="/sort/?queryCategory=all&queryMonth={{queryMonth}}">全部類別</a>
+      </div>
+    </div>
+
   </div>
 
   <div class="total-box mt-3">
@@ -22,13 +54,13 @@
     <div class="total float-right">{{totalAmount}}</div>
   </div>
 
-  <!--支出data-panel-->
+  <!--expense data-panel-->
   <div class="expense mx-auto">
 
     <ul class="list-group">
       {{#if records}}
       {{#each records}}
-      <li class="list-group-item">
+      <li class=" list-group-item border-top-0 border-right-0 border-left-0 mb-1" data-list='border'>
         <div class="row row-panel">
 
           <div class="col-1 mt-1 mr-1">
@@ -49,9 +81,12 @@
             {{/ifEquals}}
           </div>
 
-          <div class="col-6 column">
+          <div class="col-3 column ml-3">
             <div>{{this.name}}</div>
-            <div class="date">{{this.date}}</div>
+            <div class="date">{{this.formatData}}</div>
+          </div>
+          <div class="col-3 column">
+            {{this.merchant}}
           </div>
           <div class="col-2 mt-1 text-center">
             {{this.amount}}
