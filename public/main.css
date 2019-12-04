@@ -1,3 +1,10 @@
+body {
+  background-image: url("https://previews.123rf.com/images/vlado85/vlado851702/vlado85170200001/71055467-top-view-of-work-desk-with-free-space-for-text-surrounded-with-a-lot-of-desk-accessories-laptop-tabl.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  width: 100vw;
+}
 /*main*/
 .nav-out {
   background-color: #e0e0e0;
@@ -42,8 +49,6 @@
   font-weight: 300;
   color: #ff8040;
 }
-li[data-list="border"] {
-}
 /*data-panel*/
 i {
   color: #7ad8e4;
@@ -62,6 +67,9 @@ i {
 }
 .date {
   font-size: 10px;
+}
+.list-group-item {
+  width: 600px;
 }
 .btn-create {
   outline: none;
@@ -112,8 +120,14 @@ i {
   width: 80vw;
 }
 .row-login {
-  box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 8px 9px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+}
+.right {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #3cc5ff;
+  opacity: 0.7;
 }
 .left {
   background-color: black;
@@ -144,13 +158,31 @@ i {
   font-size: 25px;
   margin-left: 10px;
 }
+.btn-login {
+  background-color: #ee8140;
+}
+.btn-login:hover {
+  background-color: #f75000;
+}
+.to-register {
+  color: #ee8140;
+}
+.to-register:hover {
+  color: #f75000;
+}
 /*register*/
 .register-left {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   background-size: 750px;
   background-image: url("http://www.dailynature.net/wp-content/uploads/2019/11/Pile-of-dollars1.jpg");
   background-attachment: local;
+}
+.register-right {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }

@@ -93,13 +93,13 @@
           </div>
 
           <div class="col-1 mt-1">
-            <a href="/record/edit/{{this._id}}" class="ex-btn btn btn-info">edit</a>
+            <a href="/record/edit/{{this._id}}" class="ex-btn btn btn-info p-1">edit</a>
           </div>
 
           <!--delete action需以form送出 並在delete btn上榜定form事件-->
           <form action="/record/delete/{{this._id}}?_method=DELETE" method="POST" class="col-1 ml-2 mt-1"
             style="display:inline;" onsubmit="return confirm('確認刪除此筆支出？')">
-            <button type="submit" id="delete" class="ex-btn btn btn-danger">delete</button>
+            <button type="submit" id="delete" class="ex-btn btn btn-danger p-1">delete</button>
           </form>
 
         </div>

@@ -46,6 +46,7 @@ router.get("/", authenticated, (req, res) => {
     searchString.date = {
       $gte: `2019-${queryMonth}-01`,
       $lte: `2019-${queryMonth}-31`
+      //＄增加年份選擇功能-未完成
     };
     searchString.userId = req.user._id;
   } else if (queryCategory === "all" && queryMonth === "all") {

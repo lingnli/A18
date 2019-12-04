@@ -1,6 +1,6 @@
 # Expense Tracker 「老爹の私房錢」
 
-- AlphaCamp class 3 project:A17
+- AlphaCamp class 3 project:A18
 - 使用 Node.js 及 Express 框架打造出的網頁應用程式
 - 簡便、容易使用，連老爹也可以上手！
 
@@ -15,41 +15,32 @@ for windows , MacOS
 
 登入頁面
 
-![Image of indexpage](https://upload.cc/i1/2019/12/04/3uyHCD.png)
-
-註冊頁面
-
-![Image of indexpage](https://upload.cc/i1/2019/12/04/NZUv4p.png)
+![Image of indexpage](https://upload.cc/i1/2019/12/05/Nlp4EC.png)
 
 應用程式頁面
 
-![Image of indexpage](https://upload.cc/i1/2019/12/04/wVLhkq.png)
+![Image of indexpage](https://upload.cc/i1/2019/12/05/Lf7Beq.png)
 
 ## Features 專案功能
 
-- 內建一個種子使用者，含有五筆種支出資料
-
-  | 種子帳號 | email             | password |
-  | -------- | ----------------- | -------- |
-  | no.1     | user1@example.com | 12345678 |
-
-* 使用者可以建立帳號去管理支出明細
-* 使用者可以使用第三方登入 Facebook 去建立帳號
-* 可以新增、修改、刪除支出紀錄
-* 使用可以依照不同分類來瀏覽支出
+- 使用者可以建立帳號去管理支出明細
+- 使用者可以使用第三方登入 Facebook 去建立帳號
+- 可以新增、修改、刪除支出紀錄
+- 使用可以依照不同分類或月份來瀏覽支出
+- 新增消費商家紀錄格，以方便記憶錢到底去哪了！
 
 ## Installation 安裝專案
 
 1.從 github 下載 資料夾
 
 ```
-$ https://github.com/lingnli/A17ExpenseTracker
+$ https://github.com/lingnli/A18
 ```
 
 2.開啟 Terminal，進入此專案資料夾
 
 ```
-cd A17ExpenseTracker
+cd A18
 ```
 
 3.使用 npm 安裝套件
@@ -58,14 +49,7 @@ cd A17ExpenseTracker
 $ npm install
 ```
 
-4.進入 models/seeds 資料夾中，產生種子資料
-
-```
-$ cd models/seeds
-$ node seeder.js
-```
-
-5.執行專案
+4.執行專案
 
 ```
 $ npm run dev
@@ -73,6 +57,20 @@ $ npm run dev
 
 並開啟網址
 `http://localhost:3000`
+
+## Seeder 種子資料
+
+- 內建一個種子使用者，含有五筆種支出資料
+
+  | 種子帳號 | email             | password |
+  | -------- | ----------------- | -------- |
+  | no.1     | user1@example.com | 12345678 |
+
+若需使用種子資料請移至 A18 資料夾內後輸入以下指令
+
+```
+$ npm run seeder
+```
 
 ## 若需使用 Facebook 登入
 
@@ -95,5 +93,5 @@ callbackURL: http://localhost:3000/auth/facebook/callback
 
 ## 維護及更新
 
-- Google 驗證現正趕工中
-- 預計大配 chart.js 產生支出圓餅圖方便使用
+- Google 驗證現正趕工中，請稍待
+- 預搭配 chart.js 產生支出圓餅圖方便使用
