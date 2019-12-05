@@ -2,6 +2,9 @@ body {
   box-sizing: border-box;
 
   /* background-color: bisque; */
+
+  background-repeat: no-repeat;
+  background-position: center;
   width: 100vw;
 }
 /*main*/
@@ -129,6 +132,8 @@ i {
   border-bottom-right-radius: 10px;
   background-color: #29abe0;
   /* opacity: 0.7; */
+  background-color: #3cc5ff;
+  opacity: 0.7;
 }
 .left {
   background-color: black;
