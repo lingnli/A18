@@ -3,6 +3,7 @@
 - AlphaCamp class 3 project:A18
 - 使用 Node.js 及 Express 框架打造出的網頁應用程式
 - 簡便、容易使用，連老爹也可以上手！
+- 2019 專用
 
 ## Environment Introduction 適用環境介紹
 
@@ -15,11 +16,15 @@ for windows , MacOS
 
 登入頁面
 
-![Image of indexpage](https://upload.cc/i1/2019/12/05/Nlp4EC.png)
+![Image of indexpage](https://upload.cc/i1/2019/12/05/m9UXJb.png)
+
+註冊頁面
+
+![Image of indexpage](https://upload.cc/i1/2019/12/05/RPjZVG.png)
 
 應用程式頁面
 
-![Image of indexpage](https://upload.cc/i1/2019/12/05/Lf7Beq.png)
+![Image of indexpage](https://upload.cc/i1/2019/12/05/WrGoY9.png)
 
 ## Features 專案功能
 
@@ -95,3 +100,4 @@ callbackURL: http://localhost:3000/auth/facebook/callback
 
 - Google 驗證現正趕工中，請稍待
 - 預搭配 chart.js 產生支出圓餅圖方便使用
+- 預計增加年份搜尋
