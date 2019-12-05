@@ -38,7 +38,7 @@ db.once("open", () => {
             Record.create({
               name: recordSample[i].name,
               category: recordSample[i].category,
-              date: recordSample[i].date,
+              date: new Date(recordSample[i].date),
               amount: recordSample[i].amount,
               userId: newUser._id
             });

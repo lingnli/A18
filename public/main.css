@@ -1,16 +1,22 @@
+body {
+  box-sizing: border-box;
+
+  /* background-color: bisque; */
+  width: 100vw;
+}
 /*main*/
 .nav-out {
-  background-color: #e0e0e0;
+  background-color: #c25353;
   height: auto;
 }
 .btn-log {
-  background-color: white;
+  background-color: #ff8040;
   border: 3px solid white;
   border-radius: 7px;
-  color: #ff5809;
+  color: white;
 }
 .btn-log:hover {
-  background-color: #ff8040;
+  background-color: #f75000;
   color: white;
 }
 .title:hover {
@@ -21,11 +27,14 @@
 }
 /*index*/
 .sort,
-.sort-down {
-  width: 500px;
+.sort-down,
+.sort-month {
+  width: 200px;
   border: 1.5px solid black;
   border-radius: 0px;
+  left: 10px;
 }
+
 .sort-down {
   border: 2px solid #e0e0e0;
 }
@@ -44,7 +53,7 @@ i {
   color: #7ad8e4;
 }
 .expense {
-  width: 550px;
+  width: 560px;
 }
 .row-panel {
   height: 40px;
@@ -57,6 +66,9 @@ i {
 }
 .date {
   font-size: 10px;
+}
+.list-group-item {
+  width: 600px;
 }
 .btn-create {
   outline: none;
@@ -76,6 +88,8 @@ i {
 /*new*/
 .form-new {
   font-size: 20px;
+  background-color: #f8f5f0;
+  border-radius: 10px;
 }
 .form-group-new {
   margin: 20px;
@@ -107,8 +121,14 @@ i {
   width: 80vw;
 }
 .row-login {
-  box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 8px 9px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+}
+.right {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #29abe0;
+  /* opacity: 0.7; */
 }
 .left {
   background-color: black;
@@ -139,13 +159,32 @@ i {
   font-size: 25px;
   margin-left: 10px;
 }
+.btn-login {
+  background-color: #ee8140;
+  border: 3px solid white;
+}
+.btn-login:hover {
+  background-color: #f75000;
+}
+.to-register {
+  color: #ee8140;
+}
+.to-register:hover {
+  color: #f75000;
+}
 /*register*/
 .register-left {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   background-size: 750px;
   background-image: url("http://www.dailynature.net/wp-content/uploads/2019/11/Pile-of-dollars1.jpg");
   background-attachment: local;
+}
+.register-right {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
