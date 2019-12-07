@@ -5,6 +5,8 @@ const User = require("../models/user.js");
 const bcrypt = require("bcrypt");
 //fb
 const FacebookStrategy = require("passport-facebook");
+const GoogleStrategy = require("passport-google-oauth20");
+
 require("dotenv").config();
 
 module.exports = passport => {
@@ -73,6 +75,51 @@ module.exports = passport => {
     )
   );
 
+  //google strategy
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: process.env.GOOGLE_ID,
+        clientSecret: process.env.GOOGLE_SECRET,
+        callbackURL: process.env.GOOGLE_CALLBACK,
+        profileFields: ["email", "profile"]
+      },
+      (accessToken, refreshToken, profile, done) => {
+        console.log(profile._json);
+        User.findOne({ email: profile._json.email }).then(user => {
+          if (!user) {
+            var passwordSampleGoogle = Math.random()
+              .toString(36)
+              .slice(-8);
+            bcrypt.genSalt(10, (err, salt) => {
+              bcrypt.hash(passwordSampleGoogle, salt, (err, hash) => {
+                if (err) return console.log(err);
+                const newUser = new User({
+                  name: profile._json.name,
+                  email: profile._json.email,
+                  password: hash
+                });
+                newUser
+                  .save()
+                  .then(user => {
+                    return done(null, user);
+                  })
+                  .catch(err => {
+                    console.log(err);
+                  });
+              });
+            });
+          } else {
+            return done(null, user, {
+              message: "this google account is already register!"
+            });
+          }
+        });
+      }
+    )
+  );
+
+  //passport序列化及反序列化
   passport.serializeUser(function(user, done) {
     done(null, user.id);
   });

@@ -20,67 +20,54 @@ router.post("/new", authenticated, (req, res) => {
     userId: req.user._id
   });
   record.save(err => {
-    if (err) return console.log(err);
-    return res.redirect("/");
+    err ? console.log(err) : res.redirect("/");
   });
 });
 
 //編輯頁面
 router.get("/edit/:id", authenticated, async (req, res) => {
   console.log(req.params.id);
-
-  // Record.findOne(
-  //   { _id: req.params.id, userId: req.user._id },
-  //   (err, records) => {
-  //     if (err) return console.log(err);
-  //     //mongoDB中取出的date格式為Date()，是object，需進行轉換
-  //     formatDate = records.date.toJSON().split("T")[0];
-  //     console.log(formatDate); //轉換日期
-  //     res.render("edit", { records, formatDate });
-  //   }
-  // );
-
   let records = await Record.findOne({
     _id: req.params.id,
     userId: req.user._id
   });
-
   //mongoDB中取出的date格式為Date()，是object，需進行轉換
   formatDate = records.date.toJSON().split("T")[0];
   console.log(formatDate); //轉換日期
   res.render("edit", { records, formatDate });
 });
-router.put("/edit/:id", authenticated, (req, res) => {
-  Record.findOne(
-    { _id: req.params.id, userId: req.user._id },
-    (err, records) => {
-      if (err) return console.log(err);
-      records.name = req.body.name;
-      records.category = req.body.category;
-      records.date = req.body.date;
-      records.merchant = req.body.merchant;
-      records.amount = req.body.amount;
-      records.save(err => {
-        console.log(records);
-        if (err) return console.log(err);
-        res.redirect("/");
-      });
-    }
-  );
+router.put("/edit/:id", authenticated, async (req, res) => {
+  try {
+    let record = await Record.findOne({
+      _id: req.params.id,
+      userId: req.user._id
+    });
+    record.name = req.body.name;
+    record.category = req.body.category;
+    record.date = req.body.date;
+    record.merchant = req.body.merchant;
+    record.amount = req.body.amount;
+    record.save(err => {
+      err ? console.log(err) : res.redirect("/");
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 //刪除
-router.delete("/delete/:id", authenticated, (req, res) => {
-  Record.findOne(
-    { _id: req.params.id, userId: req.user._id },
-    (err, records) => {
-      if (err) return console.log(err);
-      records.remove(err => {
-        if (err) return console.log(err);
-        res.redirect("/");
-      });
-    }
-  );
+router.delete("/delete/:id", authenticated, async (req, res) => {
+  try {
+    let record = await Record.findOne({
+      _id: req.params.id,
+      userId: req.user._id
+    });
+    record.remove(err => {
+      err ? console.log(err) : res.redirect("/");
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 module.exports = router;

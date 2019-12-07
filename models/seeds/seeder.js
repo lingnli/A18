@@ -29,25 +29,30 @@ db.once("open", () => {
   console.log(recordSample.length);
 
   bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(newUser.password, salt, (err, hash) => {
-      newUser.password = hash;
-      newUser
-        .save()
-        .then(user => {
-          for (let i = 0; i < recordSample.length; i++) {
-            Record.create({
-              name: recordSample[i].name,
-              category: recordSample[i].category,
-              date: new Date(recordSample[i].date),
-              amount: recordSample[i].amount,
-              userId: newUser._id
-            });
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    });
+    bcrypt
+      .hash(newUser.password, salt)
+      .then(hash => {
+        newUser.password = hash;
+        newUser
+          .save()
+          .then(user => {
+            for (let i = 0; i < recordSample.length; i++) {
+              Record.create({
+                name: recordSample[i].name,
+                category: recordSample[i].category,
+                date: new Date(recordSample[i].date),
+                amount: recordSample[i].amount,
+                userId: newUser._id
+              });
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   });
   console.log(newUser);
   console.log("done");

@@ -3,7 +3,7 @@ const router = express.Router();
 const Record = require("../models/record.js");
 const { authenticated } = require("../config/auth.js");
 
-router.get("/", authenticated, (req, res) => {
+router.get("/", authenticated, async (req, res) => {
   let queryCategory = req.query.queryCategory || "";
   let queryMonth = req.query.queryMonth || "";
 
@@ -54,10 +54,8 @@ router.get("/", authenticated, (req, res) => {
     queryMonth == "全部月份";
   }
 
-  Record.find(searchString, (err, records) => {
-    if (err) return console.log(err);
-    console.log(records);
-
+  let records = await Record.find(searchString);
+  try {
     for (let i = 0; i < records.length; i++) {
       records[i].formatData = records[i].date.toJSON().split("T")[0];
     }
@@ -74,7 +72,9 @@ router.get("/", authenticated, (req, res) => {
       queryCategory, //url用
       queryMonth
     });
-  });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;
