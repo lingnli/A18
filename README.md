@@ -29,7 +29,7 @@ for windows , MacOS
 ## Features 專案功能
 
 - 使用者可以建立帳號去管理支出明細
-- 使用者可以使用第三方登入 Facebook 去建立帳號
+- 支援第三方登入，使用者可以使用 Google 帳號來進行登入
 - 可以新增、修改、刪除支出紀錄
 - 使用可以依照不同分類或月份來瀏覽支出
 - 新增消費商家紀錄格，以方便記憶錢到底去哪了！
@@ -98,6 +98,6 @@ callbackURL: http://localhost:3000/auth/facebook/callback
 
 ## 維護及更新
 
-- Google 驗證現正趕工中，請稍待
+- Facebook 登入正在 FB 平台驗證中
 - 預搭配 chart.js 產生支出圓餅圖方便使用
 - 預計增加年份搜尋
