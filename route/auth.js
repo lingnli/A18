@@ -21,12 +21,12 @@ router.get(
 
 //google
 router.get(
-  "/auth/google",
+  "/google",
   passport.authenticate("google", { scope: ["email", "profile"] })
 );
 //fb授權許可後回傳callback
 router.get(
-  "/auth/google/callback",
+  "/google/callback",
   passport.authenticate("google", {
     failureRedirect: "/user/login"
   }),
