@@ -19,9 +19,20 @@ router.post("/new", authenticated, (req, res) => {
     merchant: req.body.merchant,
     userId: req.user._id
   });
-  record.save(err => {
-    err ? console.log(err) : res.redirect("/");
-  });
+  if (record.category === "") {
+    console.log(record);
+    formatDate = record.date.toJSON().split("T")[0];
+    let new_error = true;
+    res.render("new", {
+      record,
+      formatDate,
+      new_error
+    });
+  } else {
+    record.save(err => {
+      err ? console.log(err) : res.redirect("/");
+    });
+  }
 });
 
 //編輯頁面

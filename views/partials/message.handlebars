@@ -39,3 +39,13 @@
   </button>
 </div>
 {{/if}}
+
+{{!-- 顯示在新增頁面：請選擇類別 --}}
+{{#if new_error}}
+<div class="alert alert-warning alert-dismissible fade show text-center mx-auto" role="alert">
+  請選擇類別！
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}

@@ -49,12 +49,17 @@ router.get("/", authenticated, async (req, res) => {
       //＄增加年份選擇功能-未完成
     };
     searchString.userId = req.user._id;
-  } else if (queryCategory === "all" && queryMonth === "all") {
+  } else if (
+    (queryCategory === "all" && queryMonth === "all") ||
+    (queryCategory === "" && queryMonth === "all") ||
+    (queryCategory === "all" && queryMonth === "")
+  ) {
     searchString.userId = req.user._id;
-    queryMonth == "全部月份";
   }
 
   let records = await Record.find(searchString);
+  console.log(searchString);
+  console.log(records);
   try {
     for (let i = 0; i < records.length; i++) {
       records[i].formatData = records[i].date.toJSON().split("T")[0];
