@@ -1,9 +1,7 @@
 # Expense Tracker 「老爹の私房錢」
 
 - AlphaCamp class 3 project:A18
-- 使用 Node.js 及 Express 框架打造出的網頁應用程式
-- 簡便、容易使用，連老爹也可以上手！
-- 2019 專用
+- 使用 Node.js 及 Express 框架打造出的 RWD 網頁應用程式
 
 ## Environment Introduction 適用環境介紹
 

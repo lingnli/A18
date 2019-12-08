@@ -17,10 +17,26 @@ router.get("/", authenticated, async (req, res) => {
     // ->formatDate屬性不會印在terminal,需在Schema搭配設定
     //總計
     let totalAmount = 0;
+    let chartData = [];
+    let [house, trans, leisure, food, other] = [0, 0, 0, 0, 0];
+
     for (let i = 0; i < records.length; i++) {
       totalAmount += records[i].amount;
+      //圖表統計
+      if (records[i].category === "家居物業") {
+        house += records[i].amount;
+      } else if (records[i].category === "交通出行") {
+        trans += records[i].amount;
+      } else if (records[i].category === "休閒娛樂") {
+        leisure += records[i].amount;
+      } else if (records[i].category === "餐飲食品") {
+        food += records[i].amount;
+      } else if (records[i].category === "其他") {
+        other += records[i].amount;
+      }
     }
-    res.render("index", { records, totalAmount });
+    chartData.push(house, trans, leisure, food, other);
+    res.render("index", { records, totalAmount, chartData });
   } catch (error) {
     console.log(error);
   }

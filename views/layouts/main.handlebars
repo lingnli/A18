@@ -50,6 +50,33 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
     integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
     crossorigin="anonymous"></script>
+
+  {{!-- 圓餅圖 --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+  <script>
+    var ctx = document.getElementById("chart").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['家居物業', '交通出行', '休閒娛樂', '餐飲食品', '其他'],//x軸label
+        datasets: [{
+          label: "消費",//圖表值
+
+          data: [{{ chartData }}],
+        backgroundColor: [
+          '#325D88',
+          '#7AD8E4',
+          '#29ABE0',
+          '#FF8040',
+          '#D9534E'
+        ],
+        border: 1
+      }]
+    }
+
+    });
+  </script>
+
 </body>
 
 </html>
