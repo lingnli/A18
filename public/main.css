@@ -1,8 +1,5 @@
 body {
   box-sizing: border-box;
-
-  /* background-color: bisque; */
-
   background-repeat: no-repeat;
   background-position: center;
   width: 100vw;
@@ -10,10 +7,11 @@ body {
 /*main*/
 nav {
   background-color: #325d88;
+  width: 100vw;
 }
 .nav-out {
   background-color: #c25353;
-  height: auto;
+  width: 100vw;
 }
 .btn-log {
   background-color: #ff8040;
@@ -30,6 +28,12 @@ nav {
 }
 .navtitle {
   color: #ff5809;
+}
+/* main RWD */
+@media (max-width: 500px) {
+  .nav-out {
+    font-size: 6px;
+  }
 }
 /*index*/
 .sort,
@@ -53,6 +57,27 @@ nav {
   font-weight: 300;
   color: #ff8040;
 }
+/*index RWD */
+@media (max-width: 576px) {
+  .sort,
+  .sort-down,
+  .sort-month {
+    width: 150px;
+    border: 1.5px solid black;
+    border-radius: 0px;
+  }
+  .row-sort {
+    width: 400px;
+  }
+  .total-box {
+    width: 350px;
+    height: 80px;
+  }
+  .total {
+    font-size: 70px;
+  }
+}
+
 /*data-panel*/
 i {
   color: #7ad8e4;
@@ -90,11 +115,21 @@ i {
   transform: scale(1.5, 1.5);
   transition: all 0.1s ease-out;
 }
+/* datapanel RWD */
+@media (max-width: 576px) {
+  .expense {
+    width: 460px;
+  }
+  .list-group-item {
+    width: 450px;
+  }
+}
 /*new*/
 .form-new {
   font-size: 20px;
   background-color: #f8f5f0;
   border-radius: 10px;
+  width: 480px;
 }
 .form-group-new {
   margin: 20px;
@@ -113,6 +148,21 @@ i {
 }
 .btn-new {
   border: 1.5px solid black;
+}
+/* new RWD */
+@media (max-width: 576px) {
+  .form-new {
+    font-size: 15px;
+    width: 300px;
+  }
+  .form-group-new {
+  }
+  .input-new,
+  .select-new {
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+  }
 }
 /*nav affect*/
 .dollars {

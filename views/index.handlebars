@@ -1,10 +1,10 @@
-<div class="container mt-5" style="width:600px;">
+<div class="container mt-5" style="width:100vw;">
 
-  <div class="justify-content-center row " style="width:600px;">
+  <div class="row row-sort mx-auto">
     {{!-- date --}}
 
     {{!-- date --}}
-    <div class="dropdown mx-auto col-5 mb-3">
+    <div class=" dropdown mx-auto col-5 col-sm-5 mb-3">
       <button class="sort btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
 
         {{#if queryMonth}}
@@ -52,13 +52,13 @@
 
   </div>
 
-  <div class="total-box mt-3">
+  <div class="total-box mt-3 col-sm mx-auto">
     <p class="float-left">總金額：</p>
     <div class="total float-right">{{totalAmount}}</div>
   </div>
 
   <!--expense data-panel-->
-  <div class="expense mx-auto">
+  <div class="expense mx-auto col-sm">
 
     <ul class="list-group">
       {{#if records}}
