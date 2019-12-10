@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Record = require("../models/record.js");
 const { authenticated } = require("../config/auth.js");
+const moment = require("moment");
 
 router.get("/", authenticated, async (req, res) => {
   let queryCategory = req.query.queryCategory || "";
@@ -62,20 +63,44 @@ router.get("/", authenticated, async (req, res) => {
   console.log(records);
   try {
     for (let i = 0; i < records.length; i++) {
-      records[i].formatData = records[i].date.toJSON().split("T")[0];
+      records[i].formatData = moment(records[i].date).format("YYYY-MM-DD");
     }
 
+    //圖表
     let totalAmount = 0;
+    let chartData = [];
+    let [house, trans, leisure, food, other] = [0, 0, 0, 0, 0];
+
     for (let i = 0; i < records.length; i++) {
+      console.log(records[i].category);
       totalAmount += records[i].amount;
+      switch (records[i].category) {
+        case "家居物業":
+          house += records[i].amount;
+          break;
+        case "交通出行":
+          trans += records[i].amount;
+          break;
+        case "休閒娛樂":
+          leisure += records[i].amount;
+          break;
+        case "餐飲食品":
+          food += records[i].amount;
+          break;
+        case "其他":
+          other += records[i].amount;
+          break;
+      }
     }
+    chartData.push(house, trans, leisure, food, other);
 
     res.render("index", {
       records,
       totalAmount,
       category: category[queryCategory], //保存顯示
       queryCategory, //url用
-      queryMonth
+      queryMonth,
+      chartData
     });
   } catch (error) {
     console.log(error);

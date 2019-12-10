@@ -70,6 +70,7 @@ require("./config/passport")(passport);
 app.use((req, res, next) => {
   res.locals.user = req.user;
   res.locals.isAuthenticated = req.isAuthenticated();
+  //connect-flash存入locols
   res.locals.login_auth = req.flash("login_auth");
   res.locals.logout_success = req.flash("logout_success");
   res.locals.login_error = req.flash("login_error");

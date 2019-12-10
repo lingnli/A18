@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Record = require("../models/record.js");
 const { authenticated } = require("../config/auth.js");
+const moment = require("moment");
 
 router.get("/", authenticated, (req, res) => {
   res.redirect("/");
@@ -21,7 +22,7 @@ router.post("/new", authenticated, (req, res) => {
   });
   if (record.category === "") {
     console.log(record);
-    formatDate = record.date.toJSON().split("T")[0];
+    formatDate = moment(record.date).format("YYYY-MM-DD");
     let new_error = true;
     res.render("new", {
       record,
@@ -43,7 +44,7 @@ router.get("/edit/:id", authenticated, async (req, res) => {
     userId: req.user._id
   });
   //mongoDB中取出的date格式為Date()，是object，需進行轉換
-  formatDate = records.date.toJSON().split("T")[0];
+  formatDate = moment(record.date).format("YYYY-MM-DD");
   console.log(formatDate); //轉換日期
   res.render("edit", { records, formatDate });
 });
