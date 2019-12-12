@@ -3,6 +3,7 @@ const router = express.Router();
 const Record = require("../models/record.js");
 const { authenticated } = require("../config/auth.js");
 const moment = require("moment");
+const chart = require("../public/chart");
 
 router.get("/", authenticated, async (req, res) => {
   let queryCategory = req.query.queryCategory || "";
@@ -68,31 +69,10 @@ router.get("/", authenticated, async (req, res) => {
 
     //圖表
     let totalAmount = 0;
-    let chartData = [];
-    let [house, trans, leisure, food, other] = [0, 0, 0, 0, 0];
-
     for (let i = 0; i < records.length; i++) {
-      console.log(records[i].category);
       totalAmount += records[i].amount;
-      switch (records[i].category) {
-        case "家居物業":
-          house += records[i].amount;
-          break;
-        case "交通出行":
-          trans += records[i].amount;
-          break;
-        case "休閒娛樂":
-          leisure += records[i].amount;
-          break;
-        case "餐飲食品":
-          food += records[i].amount;
-          break;
-        case "其他":
-          other += records[i].amount;
-          break;
-      }
     }
-    chartData.push(house, trans, leisure, food, other);
+    let chartData = chart(records);
 
     res.render("index", {
       records,
